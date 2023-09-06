@@ -18,17 +18,13 @@ A currency converter app based on [https://v6.exchangerate-api.com](https://v6.e
 
 [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - Concurrency design pattern that you can use in Android to simplify code that executes asynchronously.
 
-[Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html) - A type that can emit multiple values sequentially, as opposed to suspend functions that return only a single value.
+[Flows](https://kotlinlang.org/docs/reference/coroutines/flow.html) - A type that can emit multiple values sequentially, as opposed to suspend functions that return only a single value.
 
 [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow) - A state holder observable flow that emits the current and new state updates to its collectors.
 
 [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. It's basically a state holder/manager for UIs.
 
-[Jetpack Compose Navigation](https://developer.android.com/jetpack/compose/navigation) - Simplified and type-safe navigation for Jetpack Compose.[Coil](https://coil-kt.github.io/coil/) - An image loading library for Android applications that is backed by Kotlin Coroutines.
-
-[JUnit](https://junit.org/junit4/) - Simple framework for writing unit tests.
-
-[Google Truth](https://truth.dev/) - A library for performing assertions in tests.
+[Jetpack Compose Navigation](https://developer.android.com/jetpack/compose/navigation) - Simplified and type-safe navigation for Jetpack Compose.
 
 ## Installation
 
