@@ -7,11 +7,13 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -39,11 +41,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sample.currencyconverter.R
 import com.sample.currencyconverter.ui.commons.ProgressIndicator
 import com.sample.currencyconverter.ui.commons.ResizableDropdown
+import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,7 +82,6 @@ fun ConversionScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-//                        .wrapContentHeight(Alignment.Top)
             ) {
                 ResizableDropdown(
                     onSelectionChange = { baseCode ->
@@ -103,7 +106,6 @@ fun ConversionScreen(
                     viewModel.setAmount(
                         value.text
                     )
-//                    viewModel.setAmount(value.text)
                 },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
 
@@ -130,35 +132,22 @@ fun ConversionScreen(
                 Text(stringResource(R.string.convert))
             }
 
+            Spacer(modifier = Modifier.size(60.dp))
+
             pairConversionState.success?.let {
-                Box(
+                Text(
+                    text = "${stringResource(id = R.string.one)} ${it.baseCode} " +
+                            "${stringResource(id = R.string.equals)} " +
+                            "${it.conversionRate} ${it.targetCode}",
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .heightIn(min = 100.dp)
-                        .padding(16.dp)
-                        .background(Color.LightGray)
-                        .border(
-                            shape = RoundedCornerShape(8.dp),
-                            width = 0.dp,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text(
-                            text = "${stringResource(id = R.string.one)} ${it.baseCode} " +
-                                    "${stringResource(id = R.string.equals)} " +
-                                    "${it.conversionRate} ${it.targetCode}",
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
-                        )
+                        .align(Alignment.CenterHorizontally),
+                    fontSize = 30.sp
+                )
 
-
-                    }
-
-
-                }
             }
+
+            Spacer(modifier = Modifier.size(20.dp))
+
         }
 
     }
